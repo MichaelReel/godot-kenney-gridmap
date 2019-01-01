@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj-8ad949b9b7a39e08145d778250161d6c.mesh"
+
+[deps]
+
+files=[ "res://.import/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj-8ad949b9b7a39e08145d778250161d6c.mesh" ]
+
+source_file="res://nature/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj"
+dest_files=[ "res://.import/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj-8ad949b9b7a39e08145d778250161d6c.mesh", "res://.import/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj-8ad949b9b7a39e08145d778250161d6c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

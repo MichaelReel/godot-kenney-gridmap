@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://nature/Plate_Grass_01.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://nature/Grass_01.obj" type="ArrayMesh" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://nature/Grey_Waterfall_Bottom_01.obj" type="ArrayMesh" id=12]
 [ext_resource path="res://nature/Grey_Waterfall_Bottom_Top_01.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://nature/Grey_Cliff_Corner_Green_Top_01.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://nature/Plate_River_Plungepool_01.obj" type="ArrayMesh" id=15]
+[ext_resource path="res://nature/Grey_Cliff_Inside_Corner_Green_Top_01.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://nature/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj" type="ArrayMesh" id=17]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -370,6 +373,61 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 14 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_River_Plungepool_01" type="MeshInstance" parent="." index="16"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -4.4, -6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 15 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Grey_Cliff_Inside_Corner_Green_Top_01" type="MeshInstance" parent="." index="17"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.4, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 16 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Grey_Cliff_Bottom_Inside_Corner_Green_Top_01" type="MeshInstance" parent="." index="18"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 17 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
