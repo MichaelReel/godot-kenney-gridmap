@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Campfire_01.obj-df6298ab3003d443515b62cd3b969e56.mesh"
+
+[deps]
+
+files=[ "res://.import/Campfire_01.obj-df6298ab3003d443515b62cd3b969e56.mesh" ]
+
+source_file="res://nature/Decorations/Campfire_01.obj"
+dest_files=[ "res://.import/Campfire_01.obj-df6298ab3003d443515b62cd3b969e56.mesh", "res://.import/Campfire_01.obj-df6298ab3003d443515b62cd3b969e56.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

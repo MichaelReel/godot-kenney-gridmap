@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Large_Oak_Dark_01.obj-f33a30b62a547c5c1d3164ea6478e7a2.mesh"
+
+[deps]
+
+files=[ "res://.import/Large_Oak_Dark_01.obj-f33a30b62a547c5c1d3164ea6478e7a2.mesh" ]
+
+source_file="res://nature/Decorations/Large_Oak_Dark_01.obj"
+dest_files=[ "res://.import/Large_Oak_Dark_01.obj-f33a30b62a547c5c1d3164ea6478e7a2.mesh", "res://.import/Large_Oak_Dark_01.obj-f33a30b62a547c5c1d3164ea6478e7a2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

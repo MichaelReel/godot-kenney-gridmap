@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Fallen_Trunk_01.obj-05b901003baccac5cb293d915de97b30.mesh"
+
+[deps]
+
+files=[ "res://.import/Fallen_Trunk_01.obj-05b901003baccac5cb293d915de97b30.mesh" ]
+
+source_file="res://nature/Decorations/Fallen_Trunk_01.obj"
+dest_files=[ "res://.import/Fallen_Trunk_01.obj-05b901003baccac5cb293d915de97b30.mesh", "res://.import/Fallen_Trunk_01.obj-05b901003baccac5cb293d915de97b30.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plant_01.obj-297b29e26378f713eb0f6068c19636fe.mesh"
+
+[deps]
+
+files=[ "res://.import/Plant_01.obj-297b29e26378f713eb0f6068c19636fe.mesh" ]
+
+source_file="res://nature/Decorations/Plant_01.obj"
+dest_files=[ "res://.import/Plant_01.obj-297b29e26378f713eb0f6068c19636fe.mesh", "res://.import/Plant_01.obj-297b29e26378f713eb0f6068c19636fe.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

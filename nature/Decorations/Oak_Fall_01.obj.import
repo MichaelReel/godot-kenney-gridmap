@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Oak_Fall_01.obj-ba6705ef2856a32c462a6a504341c11e.mesh"
+
+[deps]
+
+files=[ "res://.import/Oak_Fall_01.obj-ba6705ef2856a32c462a6a504341c11e.mesh" ]
+
+source_file="res://nature/Decorations/Oak_Fall_01.obj"
+dest_files=[ "res://.import/Oak_Fall_01.obj-ba6705ef2856a32c462a6a504341c11e.mesh", "res://.import/Oak_Fall_01.obj-ba6705ef2856a32c462a6a504341c11e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

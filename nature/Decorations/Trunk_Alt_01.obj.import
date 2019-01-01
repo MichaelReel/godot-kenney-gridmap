@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Trunk_Alt_01.obj-e7c7b57376b179409196e5e3d0838875.mesh"
+
+[deps]
+
+files=[ "res://.import/Trunk_Alt_01.obj-e7c7b57376b179409196e5e3d0838875.mesh" ]
+
+source_file="res://nature/Decorations/Trunk_Alt_01.obj"
+dest_files=[ "res://.import/Trunk_Alt_01.obj-e7c7b57376b179409196e5e3d0838875.mesh", "res://.import/Trunk_Alt_01.obj-e7c7b57376b179409196e5e3d0838875.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

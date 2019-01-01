@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Water_Lily_01.obj-0108acf86a0c19bc7ff266b190a2259b.mesh"
+
+[deps]
+
+files=[ "res://.import/Water_Lily_01.obj-0108acf86a0c19bc7ff266b190a2259b.mesh" ]
+
+source_file="res://nature/Decorations/Water_Lily_01.obj"
+dest_files=[ "res://.import/Water_Lily_01.obj-0108acf86a0c19bc7ff266b190a2259b.mesh", "res://.import/Water_Lily_01.obj-0108acf86a0c19bc7ff266b190a2259b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
