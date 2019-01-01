@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plate_River_01.obj-8b31212d474d37a2af6c0bdb25dbe430.mesh"
+
+[deps]
+
+files=[ "res://.import/Plate_River_01.obj-8b31212d474d37a2af6c0bdb25dbe430.mesh" ]
+
+source_file="res://nature/Plate_River_01.obj"
+dest_files=[ "res://.import/Plate_River_01.obj-8b31212d474d37a2af6c0bdb25dbe430.mesh", "res://.import/Plate_River_01.obj-8b31212d474d37a2af6c0bdb25dbe430.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

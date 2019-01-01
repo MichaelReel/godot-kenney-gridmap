@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plate_Grass_01.obj-8fbba3dd73920d343f6506cb7c9a857e.mesh"
+
+[deps]
+
+files=[ "res://.import/Plate_Grass_01.obj-8fbba3dd73920d343f6506cb7c9a857e.mesh" ]
+
+source_file="res://nature/Plate_Grass_01.obj"
+dest_files=[ "res://.import/Plate_Grass_01.obj-8fbba3dd73920d343f6506cb7c9a857e.mesh", "res://.import/Plate_Grass_01.obj-8fbba3dd73920d343f6506cb7c9a857e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
