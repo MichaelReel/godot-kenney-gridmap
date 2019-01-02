@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Fence_Broken_01.obj-d0dd0893d310a51a708c9bc3893f2150.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Fence_Broken_01.obj-d0dd0893d310a51a708c9bc3893f2150.mesh" ]
+
+source_file="res://nature/Decorations/Wood_Fence_Broken_01.obj"
+dest_files=[ "res://.import/Wood_Fence_Broken_01.obj-d0dd0893d310a51a708c9bc3893f2150.mesh", "res://.import/Wood_Fence_Broken_01.obj-d0dd0893d310a51a708c9bc3893f2150.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Tall_Rock_01.obj-2a2e322f92f981d706a81ea4e976ad00.mesh"
+
+[deps]
+
+files=[ "res://.import/Tall_Rock_01.obj-2a2e322f92f981d706a81ea4e976ad00.mesh" ]
+
+source_file="res://nature/Decorations/Tall_Rock_01.obj"
+dest_files=[ "res://.import/Tall_Rock_01.obj-2a2e322f92f981d706a81ea4e976ad00.mesh", "res://.import/Tall_Rock_01.obj-2a2e322f92f981d706a81ea4e976ad00.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

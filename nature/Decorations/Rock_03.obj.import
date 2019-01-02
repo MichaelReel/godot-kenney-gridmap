@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Rock_03.obj-0659aea494919d3c2827b52883b4a755.mesh"
+
+[deps]
+
+files=[ "res://.import/Rock_03.obj-0659aea494919d3c2827b52883b4a755.mesh" ]
+
+source_file="res://nature/Decorations/Rock_03.obj"
+dest_files=[ "res://.import/Rock_03.obj-0659aea494919d3c2827b52883b4a755.mesh", "res://.import/Rock_03.obj-0659aea494919d3c2827b52883b4a755.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
