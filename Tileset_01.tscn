@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://nature/Plate_Grass_01.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://nature/Grass_01.obj" type="ArrayMesh" id=2]
@@ -19,6 +19,32 @@
 [ext_resource path="res://nature/Grey_Cliff_Bottom_Inside_Corner_Green_Top_01.obj" type="ArrayMesh" id=17]
 [ext_resource path="res://nature/Tent_01.obj" type="ArrayMesh" id=18]
 [ext_resource path="res://nature/Tent_Poles_01.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://town/Plate_Corner_01.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://town/Plate_Curve_01.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://town/Plate_Pavement_01.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://town/Plate_Road_01.obj" type="ArrayMesh" id=23]
+[ext_resource path="res://town/Plate_Sidewalk_01.obj" type="ArrayMesh" id=24]
+[ext_resource path="res://town/Wood_Arch_01.obj" type="ArrayMesh" id=25]
+[ext_resource path="res://town/Wood_Border_Wall_01.obj" type="ArrayMesh" id=26]
+[ext_resource path="res://town/Wood_Broken_Wall_01.obj" type="ArrayMesh" id=27]
+[ext_resource path="res://town/Wood_Corner_01.obj" type="ArrayMesh" id=28]
+[ext_resource path="res://town/Wood_Door_Round_01.obj" type="ArrayMesh" id=29]
+[ext_resource path="res://town/Wood_Door_Square_01.obj" type="ArrayMesh" id=30]
+[ext_resource path="res://town/Wood_Slanted_Wall_01.obj" type="ArrayMesh" id=31]
+[ext_resource path="res://town/Wood_Small_Wall_01.obj" type="ArrayMesh" id=32]
+[ext_resource path="res://town/Wood_Wall_01.obj" type="ArrayMesh" id=33]
+[ext_resource path="res://town/Wood_Wall_Cross_Inside_01.obj" type="ArrayMesh" id=34]
+[ext_resource path="res://town/Wood_Wall_Cross_Outside_01.obj" type="ArrayMesh" id=35]
+[ext_resource path="res://town/Wood_Wall_Double_Cross_Inside_01.obj" type="ArrayMesh" id=36]
+[ext_resource path="res://town/Wood_Wall_Double_Cross_Outside_01.obj" type="ArrayMesh" id=37]
+[ext_resource path="res://town/Wood_Window_Narrow_01.obj" type="ArrayMesh" id=38]
+[ext_resource path="res://town/Wood_Window_Round_01.obj" type="ArrayMesh" id=39]
+[ext_resource path="res://town/Wood_Window_Round_Long_01.obj" type="ArrayMesh" id=40]
+[ext_resource path="res://town/Wood_Window_Round_Sill_Inside_01.obj" type="ArrayMesh" id=41]
+[ext_resource path="res://town/Wood_Window_Round_Sill_Outside_01.obj" type="ArrayMesh" id=42]
+[ext_resource path="res://town/Wood_Window_Square_01.obj" type="ArrayMesh" id=43]
+[ext_resource path="res://town/Wood_Window_Square_Sill_Inside_01.obj" type="ArrayMesh" id=44]
+[ext_resource path="res://town/Wood_Window_Square_Sill_Outside_01.obj" type="ArrayMesh" id=45]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -106,6 +132,7 @@ _sections_unfolded = [ "Ambient Light", "Background" ]
 
 [node name="Spatial" type="Spatial" index="0"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.6, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Cell_Size_Guide" type="CollisionShape" parent="." index="0"]
@@ -470,6 +497,477 @@ skeleton = NodePath("..")
 material/0 = null
 material/1 = null
 material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_Corner_01" type="MeshInstance" parent="." index="21"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 20 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_Curve_01" type="MeshInstance" parent="." index="22"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 21 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_Pavement_01" type="MeshInstance" parent="." index="23"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 22 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_Road_01" type="MeshInstance" parent="." index="24"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 23 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_Sidewalk_01" type="MeshInstance" parent="." index="25"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 24 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Arch_01" type="MeshInstance" parent="." index="26"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 25 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Border_Wall_01" type="MeshInstance" parent="." index="27"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 26 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Broken_Wall_01" type="MeshInstance" parent="." index="28"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 27 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Corner_01" type="MeshInstance" parent="." index="29"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 28 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Door_Round_01" type="MeshInstance" parent="." index="30"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 29 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Door_Square_01" type="MeshInstance" parent="." index="31"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 30 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Slanted_Wall_01" type="MeshInstance" parent="." index="32"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 31 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Small_Wall_01" type="MeshInstance" parent="." index="33"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 32 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Wall_01" type="MeshInstance" parent="." index="34"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 33 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Wall_Cross_Inside_01" type="MeshInstance" parent="." index="35"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 34 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Wall_Cross_Outside_01" type="MeshInstance" parent="." index="36"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 35 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Wall_Double_Cross_Inside_01" type="MeshInstance" parent="." index="37"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 36 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Wall_Double_Cross_Outside_01" type="MeshInstance" parent="." index="38"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 37 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Narrow_01" type="MeshInstance" parent="." index="39"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -4.4, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 38 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Round_01" type="MeshInstance" parent="." index="40"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -4.4, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 39 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Round_Long_01" type="MeshInstance" parent="." index="41"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4.4, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 40 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Round_Sill_Inside_01" type="MeshInstance" parent="." index="42"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 41 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Round_Sill_Outside_01" type="MeshInstance" parent="." index="43"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -4.4, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 42 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Square_01" type="MeshInstance" parent="." index="44"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -4.4, 12 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 43 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Square_Sill_Inside_02" type="MeshInstance" parent="." index="45"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -4.4, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 44 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood_Window_Square_Sill_Outside_01" type="MeshInstance" parent="." index="46"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -4.4, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 45 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
 _sections_unfolded = [ "Transform" ]
 
 

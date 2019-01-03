@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Window_Square_Sill_Outside_01.obj-880b2670bfbbb9b4435b043dbd54bc3a.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Window_Square_Sill_Outside_01.obj-880b2670bfbbb9b4435b043dbd54bc3a.mesh" ]
+
+source_file="res://town/Wood_Window_Square_Sill_Outside_01.obj"
+dest_files=[ "res://.import/Wood_Window_Square_Sill_Outside_01.obj-880b2670bfbbb9b4435b043dbd54bc3a.mesh", "res://.import/Wood_Window_Square_Sill_Outside_01.obj-880b2670bfbbb9b4435b043dbd54bc3a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

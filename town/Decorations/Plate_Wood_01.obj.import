@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plate_Wood_01.obj-f7dfeee397ee66ee69a2a04575eaf55d.mesh"
+
+[deps]
+
+files=[ "res://.import/Plate_Wood_01.obj-f7dfeee397ee66ee69a2a04575eaf55d.mesh" ]
+
+source_file="res://town/Decorations/Plate_Wood_01.obj"
+dest_files=[ "res://.import/Plate_Wood_01.obj-f7dfeee397ee66ee69a2a04575eaf55d.mesh", "res://.import/Plate_Wood_01.obj-f7dfeee397ee66ee69a2a04575eaf55d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

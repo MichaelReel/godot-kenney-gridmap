@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Broken_Wall_01.obj-74202e77ca31db603d1d78c826f49253.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Broken_Wall_01.obj-74202e77ca31db603d1d78c826f49253.mesh" ]
+
+source_file="res://town/Wood_Broken_Wall_01.obj"
+dest_files=[ "res://.import/Wood_Broken_Wall_01.obj-74202e77ca31db603d1d78c826f49253.mesh", "res://.import/Wood_Broken_Wall_01.obj-74202e77ca31db603d1d78c826f49253.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

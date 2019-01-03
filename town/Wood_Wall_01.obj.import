@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Wall_01.obj-34cecf221506474faf72eaf496d7408d.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Wall_01.obj-34cecf221506474faf72eaf496d7408d.mesh" ]
+
+source_file="res://town/Wood_Wall_01.obj"
+dest_files=[ "res://.import/Wood_Wall_01.obj-34cecf221506474faf72eaf496d7408d.mesh", "res://.import/Wood_Wall_01.obj-34cecf221506474faf72eaf496d7408d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plate_Sidewalk_01.obj-41978a70c9c9ef557342f80ca55ff086.mesh"
+
+[deps]
+
+files=[ "res://.import/Plate_Sidewalk_01.obj-41978a70c9c9ef557342f80ca55ff086.mesh" ]
+
+source_file="res://town/Plate_Sidewalk_01.obj"
+dest_files=[ "res://.import/Plate_Sidewalk_01.obj-41978a70c9c9ef557342f80ca55ff086.mesh", "res://.import/Plate_Sidewalk_01.obj-41978a70c9c9ef557342f80ca55ff086.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

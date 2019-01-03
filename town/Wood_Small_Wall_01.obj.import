@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Small_Wall_01.obj-3f635251f0db7683dede8c4f1ebc5a35.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Small_Wall_01.obj-3f635251f0db7683dede8c4f1ebc5a35.mesh" ]
+
+source_file="res://town/Wood_Small_Wall_01.obj"
+dest_files=[ "res://.import/Wood_Small_Wall_01.obj-3f635251f0db7683dede8c4f1ebc5a35.mesh", "res://.import/Wood_Small_Wall_01.obj-3f635251f0db7683dede8c4f1ebc5a35.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

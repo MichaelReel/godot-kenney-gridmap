@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plate_Pavement_01.obj-aa1b69953f090d321c53e7bb7fec9432.mesh"
+
+[deps]
+
+files=[ "res://.import/Plate_Pavement_01.obj-aa1b69953f090d321c53e7bb7fec9432.mesh" ]
+
+source_file="res://town/Plate_Pavement_01.obj"
+dest_files=[ "res://.import/Plate_Pavement_01.obj-aa1b69953f090d321c53e7bb7fec9432.mesh", "res://.import/Plate_Pavement_01.obj-aa1b69953f090d321c53e7bb7fec9432.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

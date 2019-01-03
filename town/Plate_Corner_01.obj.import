@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Plate_Corner_01.obj-42fe7bc6d4d052ad169307f385a3af02.mesh"
+
+[deps]
+
+files=[ "res://.import/Plate_Corner_01.obj-42fe7bc6d4d052ad169307f385a3af02.mesh" ]
+
+source_file="res://town/Plate_Corner_01.obj"
+dest_files=[ "res://.import/Plate_Corner_01.obj-42fe7bc6d4d052ad169307f385a3af02.mesh", "res://.import/Plate_Corner_01.obj-42fe7bc6d4d052ad169307f385a3af02.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
