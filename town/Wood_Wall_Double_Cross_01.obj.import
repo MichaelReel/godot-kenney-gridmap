@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Wall_Double_Cross_01.obj-e8215336d5fab99036d1d498242fc22f.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Wall_Double_Cross_01.obj-e8215336d5fab99036d1d498242fc22f.mesh" ]
+
+source_file="res://town/Wood_Wall_Double_Cross_01.obj"
+dest_files=[ "res://.import/Wood_Wall_Double_Cross_01.obj-e8215336d5fab99036d1d498242fc22f.mesh", "res://.import/Wood_Wall_Double_Cross_01.obj-e8215336d5fab99036d1d498242fc22f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
