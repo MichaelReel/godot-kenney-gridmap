@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://town/Wood_Border_Wall_01.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://town/Wood_Broken_Wall_01.obj" type="ArrayMesh" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://town/Wood_Window_Square_01.obj" type="ArrayMesh" id=15]
 [ext_resource path="res://town/Wood_Window_Square_Sill_01.obj" type="ArrayMesh" id=16]
 [ext_resource path="res://town/Wood_Arch_01.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://town/Stairs_Wood_01.obj" type="ArrayMesh" id=18]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -420,6 +421,23 @@ mesh = ExtResource( 17 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Stairs_Wood_01" type="MeshInstance" parent="." index="19"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 18 )
+skeleton = NodePath("..")
+material/0 = null
 _sections_unfolded = [ "Transform" ]
 
 

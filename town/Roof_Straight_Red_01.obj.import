@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Roof_Straight_Red_01.obj-2c61dfe26015f5c04fc72af2ac380e20.mesh"
+
+[deps]
+
+files=[ "res://.import/Roof_Straight_Red_01.obj-2c61dfe26015f5c04fc72af2ac380e20.mesh" ]
+
+source_file="res://town/Roof_Straight_Red_01.obj"
+dest_files=[ "res://.import/Roof_Straight_Red_01.obj-2c61dfe26015f5c04fc72af2ac380e20.mesh", "res://.import/Roof_Straight_Red_01.obj-2c61dfe26015f5c04fc72af2ac380e20.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

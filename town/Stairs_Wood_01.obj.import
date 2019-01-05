@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Stairs_Wood_01.obj-c919fdc56f87592e2f1647aa75034630.mesh"
+
+[deps]
+
+files=[ "res://.import/Stairs_Wood_01.obj-c919fdc56f87592e2f1647aa75034630.mesh" ]
+
+source_file="res://town/Stairs_Wood_01.obj"
+dest_files=[ "res://.import/Stairs_Wood_01.obj-c919fdc56f87592e2f1647aa75034630.mesh", "res://.import/Stairs_Wood_01.obj-c919fdc56f87592e2f1647aa75034630.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

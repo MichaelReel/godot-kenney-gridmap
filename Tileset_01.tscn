@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://nature/Plate_Grass_01.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://nature/Grass_01.obj" type="ArrayMesh" id=2]
@@ -24,6 +24,12 @@
 [ext_resource path="res://town/Plate_Pavement_01.obj" type="ArrayMesh" id=22]
 [ext_resource path="res://town/Plate_Road_01.obj" type="ArrayMesh" id=23]
 [ext_resource path="res://town/Plate_Sidewalk_01.obj" type="ArrayMesh" id=24]
+[ext_resource path="res://town/Plate_Wood_01.obj" type="ArrayMesh" id=25]
+[ext_resource path="res://town/Roof_Corner_Red_01.obj" type="ArrayMesh" id=26]
+[ext_resource path="res://town/Roof_Inner_Corner_Red_01.obj" type="ArrayMesh" id=27]
+[ext_resource path="res://town/Roof_Point_Red_01.obj" type="ArrayMesh" id=28]
+[ext_resource path="res://town/Roof_Slant_Red_01.obj" type="ArrayMesh" id=29]
+[ext_resource path="res://town/Roof_Straight_Red_01.obj" type="ArrayMesh" id=30]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -565,6 +571,122 @@ mesh = ExtResource( 24 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plate_Wood_01" type="MeshInstance" parent="." index="26"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 25 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Roof_Corner_Red_01" type="MeshInstance" parent="." index="27"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 26 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Roof_Inner_Corner_Red_01" type="MeshInstance" parent="." index="28"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 27 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Roof_Point_Red_01" type="MeshInstance" parent="." index="29"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 28 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Roof_Slant_Red_01" type="MeshInstance" parent="." index="30"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 29 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Roof_Straight_Red_01" type="MeshInstance" parent="." index="31"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.4, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 30 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
 _sections_unfolded = [ "Transform" ]
 
 
