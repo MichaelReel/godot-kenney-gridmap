@@ -2,7 +2,7 @@ extends KinematicBody
 
 const norm_grav = -24.8         # Strength of gravity while walking
 var vel = Vector3()             # Velocity
-const MAX_SPEED = 20            # Fastest player can reach
+const MAX_SPEED = 10            # Fastest player can reach
 const JUMP_SPEED = 7            # Affects how high we can jump
 const ACCEL = 3.5               # How fast we get to top speed
 

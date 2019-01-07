@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Door_Collision.obj-9af7ad79f09cefc9bf001d206992adf2.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Door_Collision.obj-9af7ad79f09cefc9bf001d206992adf2.mesh" ]
+
+source_file="res://town/Wood_Door_Collision.obj"
+dest_files=[ "res://.import/Wood_Door_Collision.obj-9af7ad79f09cefc9bf001d206992adf2.mesh", "res://.import/Wood_Door_Collision.obj-9af7ad79f09cefc9bf001d206992adf2.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

@@ -8,7 +8,7 @@ radius = 0.25
 height = 0.5
 _sections_unfolded = [ "Resource" ]
 
-[node name="WalkingCamera" type="KinematicBody" index="0"]
+[node name="WalkingCamera" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 input_ray_pickable = true
