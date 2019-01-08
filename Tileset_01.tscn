@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://nature/Plate_Grass_01.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://nature/Grass_01.obj" type="ArrayMesh" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://town/Roof_Point_Red_01.obj" type="ArrayMesh" id=28]
 [ext_resource path="res://town/Roof_Slant_Red_01.obj" type="ArrayMesh" id=29]
 [ext_resource path="res://town/Roof_Straight_Red_01.obj" type="ArrayMesh" id=30]
+[ext_resource path="res://town/Wood_Scaffolding_01.obj" type="ArrayMesh" id=31]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -1103,7 +1104,6 @@ disabled = false
 
 [node name="Plate_Wood_01" type="MeshInstance" parent="." index="26"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
 layers = 1
 material_override = null
@@ -1134,6 +1134,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 shape = SubResource( 27 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 
 [node name="Roof_Corner_Red_01" type="MeshInstance" parent="." index="27"]
 
@@ -1318,5 +1319,40 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 shape = SubResource( 32 )
 disabled = false
+
+[node name="Wood_Scaffolding_01" type="MeshInstance" parent="." index="32"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 31 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody" type="StaticBody" parent="Wood_Scaffolding_01" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="Cell_Size_Guide2" type="CollisionShape" parent="Wood_Scaffolding_01/StaticBody" index="0"]
+
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
 
 

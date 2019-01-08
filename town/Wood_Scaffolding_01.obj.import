@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Wood_Scaffolding_01.obj-01c25d0ea6a80a192ef27abb20cd545b.mesh"
+
+[deps]
+
+files=[ "res://.import/Wood_Scaffolding_01.obj-01c25d0ea6a80a192ef27abb20cd545b.mesh" ]
+
+source_file="res://town/Wood_Scaffolding_01.obj"
+dest_files=[ "res://.import/Wood_Scaffolding_01.obj-01c25d0ea6a80a192ef27abb20cd545b.mesh", "res://.import/Wood_Scaffolding_01.obj-01c25d0ea6a80a192ef27abb20cd545b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
