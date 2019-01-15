@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TownBuilder.gd" type="Script" id=1]
+[ext_resource path="res://Test_TileSet_01.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://Test_TileSet_03.meshlib" type="MeshLibrary" id=3]
+[ext_resource path="res://camera/FlyingCamera.tscn" type="PackedScene" id=4]
+
+[node name="TownBuilder" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+base_extends = Vector2( 15, 10 )
+town_seed = 2
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 43, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TerrainGrid" type="GridMap" parent="." index="1"]
+
+theme = ExtResource( 2 )
+cell_size = Vector3( 3, 2.2, 3 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray(  )
+}
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true,
+"_editor_clip_": 0
+}
+
+[node name="WallMap" type="GridMap" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0.75 )
+theme = ExtResource( 3 )
+cell_size = Vector3( 1.5, 2.2, 1.5 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray(  )
+}
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_edit_lock_": true,
+"_editor_clip_": 0
+}
+
+[node name="FlyingCamera" parent="." index="3" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+_sections_unfolded = [ "Transform" ]
+
+
