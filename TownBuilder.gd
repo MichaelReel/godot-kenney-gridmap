@@ -1,7 +1,13 @@
 extends Spatial
 
-export(Vector2)  var base_extends = Vector2()
-export(int)      var town_seed    = 0
+# Configurable parameters
+export (Vector2)  var base_extends    = Vector2(10,10)
+export (int)      var town_seed       = 0
+export (int)      var min_building    = 3
+export (int)      var min_height      = 1
+export (int)      var max_height      = 3
+export (int)      var road_width      = 1
+export (int)      var main_road_width = 2
 
 # GridMaps
 var terrain_layer
@@ -24,54 +30,95 @@ func _ready():
 	
 	rand_seed(town_seed)
 	
-	base()
-	var squares = subdivide(Rect2(-base_extends.x, -base_extends.y, 2 * base_extends.x, 2 * base_extends.y), true)
+	var town_base = Rect2(-base_extends.x / 2, -base_extends.y / 2, base_extends.x, base_extends.y)
+	draw_ground_level_tile_square(town_base, base_tile)
+	var squares = subdivide(town_base, true)
 	var boxes = make_3d_boxes(squares)
 	draw_scaffolds(squares, boxes)
+
+func subdivide(plot, make_center):
+	var plots = []
 	
-
-func base():
-	for z in range(-base_extends.y, base_extends.y):
-		for x in range(-base_extends.x, base_extends.x):
-			terrain_layer.set_cell_item(x, 0, z, base_tile)
-
-
-func subdivide(square, main_road):
-	var squares = []
-	
-	# If main road division, make the road go from a wall to the center, 2 wide
-	# Then split up the rest of the square into 3 squares
-	if (main_road):
-		var centre = (square.end + square.position) / 2
-		var road_square = Rect2(centre.x - 1, centre.y - 1, (square.size.x / 2) + 1, 2)
-		draw_ground_level_tile_square(road_square, road_tile)
-		squares += subdivide(Rect2(square.position.x, square.position.y, (square.size.x / 2) - 1, square.size.y          ), false)
-		squares += subdivide(Rect2(centre.x - 1,   square.position.y, (square.size.x / 2) + 1, (square.size.y / 2) - 1), false)
-		squares += subdivide(Rect2(centre.x - 1,   centre.y + 1,   (square.size.x / 2) + 1, (square.size.y / 2) - 1), false)
+	# If a main road division, make the road go from a wall to the centre, 2 wide
+	# Then split up the rest of the plot into 3 plots
+	if (make_center):
+		
+		var main_road_half = main_road_width / 2
+		var centre = (plot.end + plot.position) / 2
+		var main_square = Rect2(centre.x - main_road_half, centre.y - main_road_half, main_road_width, main_road_width)
+		
+		#  +------+-+---------+  plot.end.y
+		#  |      | |         |
+		#  |      | |         |
+		#  |      +-+-+-------+  main_square.end.y
+		#  |      |_|_|       |
+		#  |      | | |       |
+		#  |      +-+-+-------+  main_square.position.y
+		#  |      | |         |
+		#  |      | |         |
+		#  +------+-+-+-------+  plot.position.y
+		#                  
+		#  |      | | |       `- plot.end.x
+		#  |      | | `- main_square.end.x
+		#  |      | `- centre.x
+		#  |      `- main_square.position.x
+		#  `- plot.position.x
+		
+		var part_1 = Rect2(plot.position.x, plot.position.y, main_square.position.x - plot.position.x, plot.size.y)
+		var part_2 = Rect2(main_square.position.x + road_width, main_square.end.y, plot.end.x - centre.x, plot.end.y - main_square.end.y)
+		var part_3 = Rect2(main_square.position.x + road_width, plot.position.y, plot.end.x - centre.x, main_square.position.y - plot.position.y)
+		
+		#  +------+-+---------+  ^
+		#  |p1    |r|p2       |  | part_2.size.y
+		#  |      | |         |  |
+		#  |      +-+-+-------+  x
+		#  |      |ms |mr     |  | main_road_width
+		#  |      |   |       |  |
+		#  |      +-+-+-------+  x
+		#  |      |r|p3       |  | part_3.size.y
+		#  |      | |         |  |
+		#  +------+-+-+-------+  v
+		#                  
+		#  <------x-| |------->
+		#     |    |      `- part_3.size.x
+		#     |    | 
+		#     |    `- road_width
+		#     `- part_1.size.x
+		
+		var main_road    = Rect2(main_square.end.x, main_square.position.y, plot.end.x - main_square.end.x, main_road_width)
+		var cross_road_1 = Rect2(main_square.position.x, main_square.end.y, road_width, part_2.size.y)
+		var cross_road_2 = Rect2(main_square.position.x, plot.position.y, road_width, part_3.size.y)
+		
+#		draw_ground_level_tile_square(main_square, road_tile)
+		draw_ground_level_tile_square(main_road, road_tile)
+		draw_ground_level_tile_square(cross_road_1, road_tile)
+		draw_ground_level_tile_square(cross_road_2, road_tile)
+		plots += subdivide(part_1, false)
+		plots += subdivide(part_2, false)
+		plots += subdivide(part_3, false)
 	else:
 		# Try cutting on the longest side first, then the shorter side
-		if (square.size.x > square.size.y):
-			var squares_x = subdivide_by_x(square)
-			if squares_x.size() > 1:
-				squares += squares_x
+		if (plot.size.x > plot.size.y):
+			var plots_x = subdivide_by_x(plot)
+			if plots_x.size() > 1:
+				plots += plots_x
 			else: 
-				squares += subdivide_by_y(square)
+				plots += subdivide_by_y(plot)
 		else:
-			var squares_y = subdivide_by_y(square)
-			if squares_y.size() > 1:
-				squares += squares_y
+			var plots_y = subdivide_by_y(plot)
+			if plots_y.size() > 1:
+				plots += plots_y
 			else:
-				squares += subdivide_by_x(square)
-	
-	return squares
+				plots += subdivide_by_x(plot)
+	return plots
 
 func subdivide_by_x(square):
 	# Is there enough space to split it?
-	if square.size.x < 7:
+	if square.size.x < (2 * min_building) + road_width:
 		# TODO: allow edge roads for blocks smaller that 7?
 		return [square]
 	# Do any valid splits have a road at the end?
-	var splits = range(square.position.x + 3, square.end.x - 3)
+	var splits = range(square.position.x + min_building, square.end.x - min_building)
 	var road_splits = []
 	for split in splits:
 		var term_1 = terrain_layer.get_cell_item(split, 0, square.position.y - 1)
@@ -97,15 +144,15 @@ func subdivide_by_x(square):
 	
 func subdivide_by_y(square):
 	# Is there enough space to split it?
-	if square.size.y < 7:
+	if square.size.y < (2 * min_building) + road_width:
 		# TODO: allow edge roads for blocks smaller that 7?
 		return [square]
 	# Do any valid splits have a road at the end?
-	var splits = range(square.position.y + 3, square.end.y - 3)
+	var splits = range(square.position.y + min_building, square.end.y - min_building)
 	var road_splits = []
 	for split in splits:
 		var term_1 = terrain_layer.get_cell_item(square.position.x - 1, 0, split)
-		var term_2 = terrain_layer.get_cell_item(square.end.x,      0, split)
+		var term_2 = terrain_layer.get_cell_item(square.end.x, 0, split)
 		# Add path twice if paved at both ends
 		if (term_1 == road_tile):
 			road_splits.append(split)
@@ -127,7 +174,7 @@ func subdivide_by_y(square):
 func make_3d_boxes(squares):
 	var boxes = []
 	for square in squares:
-		var height = randi() % 3 + 2
+		var height = randi() % (max_height - min_height + 1) + min_height
 		boxes.append(AABB(Vector3(square.position.x, 1, square.position.y), Vector3(square.size.x, height, square.size.y)))
 	return boxes
 

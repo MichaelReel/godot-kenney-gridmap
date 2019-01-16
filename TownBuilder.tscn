@@ -11,8 +11,13 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-base_extends = Vector2( 15, 10 )
+base_extends = Vector2( 40, 40 )
 town_seed = 2
+min_building = 3
+min_height = 1
+max_height = 3
+road_width = 1
+main_road_width = 2
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
 
