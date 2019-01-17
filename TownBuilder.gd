@@ -124,9 +124,7 @@ func subdivide_by_x(square):
 		var term_1 = terrain_layer.get_cell_item(split, 0, square.position.y - 1)
 		var term_2 = terrain_layer.get_cell_item(split, 0, square.end.y)
 		# Add path twice if paved at both ends
-		if (term_1 == road_tile):
-			road_splits.append(split)
-		if (term_2 == road_tile):
+		if (term_1 == road_tile or term_2 == road_tile):
 			road_splits.append(split)
 	
 	if road_splits.empty():
@@ -140,8 +138,7 @@ func subdivide_by_x(square):
 	squares += subdivide(Rect2(square.position.x, square.position.y, split - square.position.x, square.size.y), false)
 	squares += subdivide(Rect2(split + 1, square.position.y, square.end.x - split - 1, square.size.y), false)
 	return squares
-	
-	
+
 func subdivide_by_y(square):
 	# Is there enough space to split it?
 	if square.size.y < (2 * min_building) + road_width:
@@ -154,9 +151,7 @@ func subdivide_by_y(square):
 		var term_1 = terrain_layer.get_cell_item(square.position.x - 1, 0, split)
 		var term_2 = terrain_layer.get_cell_item(square.end.x, 0, split)
 		# Add path twice if paved at both ends
-		if (term_1 == road_tile):
-			road_splits.append(split)
-		if (term_2 == road_tile):
+		if (term_1 == road_tile or term_2 == road_tile):
 			road_splits.append(split)
 	
 	if road_splits.empty():
