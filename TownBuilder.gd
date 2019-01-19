@@ -15,20 +15,10 @@ export (int)      var split_rate      = 20                  # how likely should 
 var terrain_layer
 var wall_layer
 
-# Tiles
-var base_tile
-var road_tile
-var scaffold_tile
-var floor_tile
-
 func _ready():
 	terrain_layer = $TerrainGrid
 	wall_layer = $WallMap
-	
-	base_tile     = terrain_layer.theme.find_item_by_name("Plate_Grass_01")
-	road_tile     = terrain_layer.theme.find_item_by_name("Plate_Pavement_01")
-	scaffold_tile = terrain_layer.theme.find_item_by_name("Wood_Scaffolding_01")
-	floor_tile    = terrain_layer.theme.find_item_by_name("Plate_Wood_01")
+	setup_tiles()
 	
 	rand_seed(town_seed)
 	
@@ -37,6 +27,30 @@ func _ready():
 	var squares = subdivide(town_base, true)
 	var boxes = make_3d_boxes(squares)
 	draw_scaffolds(squares, boxes)
+	draw_roofs(boxes)
+
+# Tiles
+var base_tile
+var road_tile
+var scaffold_tile
+var floor_tile
+var roof_corner_tile
+var roof_slant_tile
+var roof_straight_tile
+var roof_straight_end_tile
+var roof_point_tile
+
+func setup_tiles():
+	base_tile              = terrain_layer.theme.find_item_by_name("Plate_Grass_01")
+	road_tile              = terrain_layer.theme.find_item_by_name("Plate_Pavement_01")
+	scaffold_tile          = terrain_layer.theme.find_item_by_name("Wood_Scaffolding_01")
+	floor_tile             = terrain_layer.theme.find_item_by_name("Plate_Wood_01")
+	roof_corner_tile       = terrain_layer.theme.find_item_by_name("Roof_Corner_Red_02")
+	roof_slant_tile        = terrain_layer.theme.find_item_by_name("Roof_Slant_Red_01")
+	roof_straight_tile     = terrain_layer.theme.find_item_by_name("Roof_Straight_Red_01")
+	roof_straight_end_tile = terrain_layer.theme.find_item_by_name("Roof_Straight_End_Red_01")
+	roof_point_tile        = terrain_layer.theme.find_item_by_name("Roof_Point_Red_01")
+	
 
 func subdivide(plot, make_center):
 	var plots = []
@@ -211,6 +225,56 @@ func draw_tiles_solid_box(box, tile):
 				pos.y = box.position.y + y
 				pos.z = box.position.z + z
 				terrain_layer.set_cell_item(pos.x, pos.y, pos.z, tile)
-	
 
+func draw_roofs(boxes):
+	while not boxes.empty():
+		boxes += draw_roof(boxes.pop_front())
+
+func draw_roof(box):
+	# If x and z are both 1, then just a point will do
+	if box.size.x == 1 and box.size.z == 1:
+		terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_point_tile, 0)
+		return []
 	
+	# If x or z are equal to 1, then we're on straight bits
+	if box.size.x == 1:
+		terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_straight_end_tile, 16)
+		terrain_layer.set_cell_item(box.position.x, box.end.y, box.end.z - 1, roof_straight_end_tile, 22)
+		if box.size.z > 2:
+			for z in range (box.position.z + 1, box.end.z - 1):
+				terrain_layer.set_cell_item(box.position.x, box.end.y, z, roof_straight_tile, 16)
+		return []
+	
+	if box.size.z == 1:
+		terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_straight_end_tile, 10)
+		terrain_layer.set_cell_item(box.end.x - 1, box.end.y, box.position.z, roof_straight_end_tile, 0)
+		if box.size.x > 2:
+			for x in range (box.position.x + 1, box.end.x - 1):
+				terrain_layer.set_cell_item(x, box.end.y, box.position.z, roof_straight_tile, 0)
+		return []
+	
+	var raised_sections = []
+	# draw corners - TODO: currently very specific code, may be able to generify:
+	terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_corner_tile, 16)
+	terrain_layer.set_cell_item(box.end.x - 1, box.end.y, box.position.z, roof_corner_tile, 0)
+	terrain_layer.set_cell_item(box.position.x, box.end.y, box.end.z - 1, roof_corner_tile, 10)
+	terrain_layer.set_cell_item(box.end.x - 1, box.end.y, box.end.z - 1, roof_corner_tile, 22)
+	
+	# If x or z are greater than 2 then:
+	# we need to insert the slant pieces
+	if box.size.x > 2:
+		for x in range (box.position.x + 1, box.end.x - 1):
+			terrain_layer.set_cell_item(x, box.end.y, box.position.z, roof_slant_tile, 16)
+			terrain_layer.set_cell_item(x, box.end.y, box.end.z - 1, roof_slant_tile, 22)
+	
+	if box.size.z > 2:
+		for z in range(box.position.z + 1, box.end.z - 1):
+			terrain_layer.set_cell_item(box.position.x, box.end.y, z, roof_slant_tile, 10)
+			terrain_layer.set_cell_item(box.end.x - 1, box.end.y, z, roof_slant_tile, 0)
+	
+	# If x and y are both greater than 2, then:
+	# we need another higher roof box to build roof pieces on
+	if box.size.x > 2 and box.size.z > 2:
+		raised_sections.append(AABB(Vector3(box.position.x + 1, box.end.y, box.position.z + 1), Vector3(box.size.x - 2, 1, box.size.z - 2)))
+	
+	return raised_sections
