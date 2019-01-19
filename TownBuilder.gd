@@ -1,13 +1,15 @@
 extends Spatial
 
 # Configurable parameters
-export (Vector2)  var base_extends    = Vector2(10,10)
-export (int)      var town_seed       = 0
-export (int)      var min_building    = 3
-export (int)      var min_height      = 1
-export (int)      var max_height      = 3
-export (int)      var road_width      = 1
-export (int)      var main_road_width = 2
+export (Vector2)  var base_extends    = Vector2(50,50)      # how big to make the town
+export (int)      var town_seed       = 0                   # randomization seed
+export (int)      var min_building    = 3                   # minimum building width
+export (int)      var max_building    = 10                  # maximum building width
+export (int)      var min_height      = 1                   # minimum building height
+export (int)      var max_height      = 3                   # maximum building height
+export (int)      var road_width      = 2                   # normal width of roads
+export (int)      var main_road_width = 4                   # width of the starting main road
+export (int)      var split_rate      = 20                  # how likely should block splitting be
 
 # GridMaps
 var terrain_layer
@@ -113,18 +115,21 @@ func subdivide(plot, make_center):
 	return plots
 
 func subdivide_by_x(square):
+	# Don't bother splitting if we don't beat the odds
+	if (square.size.x < max_building) and (randi() % split_rate) == 0:
+		return [square]
+	
 	# Is there enough space to split it?
 	if square.size.x < (2 * min_building) + road_width:
-		# TODO: allow edge roads for blocks smaller that 7?
 		return [square]
-	# Do any valid splits have a road at the end?
-	var splits = range(square.position.x + min_building, square.end.x - min_building)
+	
+	# Do any valid splits have a road covering the end?
+	var splits = range(square.position.x + min_building, square.end.x - min_building - (road_width - 1))
 	var road_splits = []
 	for split in splits:
-		var term_1 = terrain_layer.get_cell_item(split, 0, square.position.y - 1)
-		var term_2 = terrain_layer.get_cell_item(split, 0, square.end.y)
-		# Add path twice if paved at both ends
-		if (term_1 == road_tile or term_2 == road_tile):
+		var road_end_1 = test_plot_for_tile(Rect2(split, square.position.y - 1, road_width - 1, 0), road_tile)
+		var road_end_2 = test_plot_for_tile(Rect2(split, square.end.y, road_width - 1, 0), road_tile)
+		if (road_end_1 or road_end_2):
 			road_splits.append(split)
 	
 	if road_splits.empty():
@@ -132,26 +137,29 @@ func subdivide_by_x(square):
 	
 	# Create the path and return the remaining spaces
 	var split = road_splits[randi() % road_splits.size()]
-	var road_square = Rect2(split, square.position.y, 1, square.size.y)
+	var road_square = Rect2(split, square.position.y, road_width, square.size.y)
 	draw_ground_level_tile_square(road_square, road_tile)
 	var squares = []
 	squares += subdivide(Rect2(square.position.x, square.position.y, split - square.position.x, square.size.y), false)
-	squares += subdivide(Rect2(split + 1, square.position.y, square.end.x - split - 1, square.size.y), false)
+	squares += subdivide(Rect2(split + road_width, square.position.y, square.end.x - split - road_width, square.size.y), false)
 	return squares
 
 func subdivide_by_y(square):
+	# Don't bother splitting if we're small enough already and we don't beat the odds
+	if (square.size.y < max_building) and (randi() % split_rate) == 0:
+		return [square]
+	
 	# Is there enough space to split it?
 	if square.size.y < (2 * min_building) + road_width:
-		# TODO: allow edge roads for blocks smaller that 7?
 		return [square]
+	
 	# Do any valid splits have a road at the end?
-	var splits = range(square.position.y + min_building, square.end.y - min_building)
+	var splits = range(square.position.y + min_building, square.end.y - min_building - (road_width - 1))
 	var road_splits = []
 	for split in splits:
-		var term_1 = terrain_layer.get_cell_item(square.position.x - 1, 0, split)
-		var term_2 = terrain_layer.get_cell_item(square.end.x, 0, split)
-		# Add path twice if paved at both ends
-		if (term_1 == road_tile or term_2 == road_tile):
+		var road_end_1 = test_plot_for_tile(Rect2(square.position.x - 1, split, 0, road_width - 1), road_tile)
+		var road_end_2 = test_plot_for_tile(Rect2(square.end.x, split, 0, road_width - 1), road_tile)
+		if (road_end_1 or road_end_2):
 			road_splits.append(split)
 	
 	if road_splits.empty():
@@ -159,12 +167,19 @@ func subdivide_by_y(square):
 	
 	# Create the path and return the remaining spaces
 	var split = road_splits[randi() % road_splits.size()]
-	var road_square = Rect2(square.position.x, split, square.size.x, 1)
+	var road_square = Rect2(square.position.x, split, square.size.x, road_width)
 	draw_ground_level_tile_square(road_square, road_tile)
 	var squares = []
 	squares += subdivide(Rect2(square.position.x, square.position.y, square.size.x, split - square.position.y), false)
-	squares += subdivide(Rect2(square.position.x, split + 1, square.size.x, square.end.y - split - 1), false)
+	squares += subdivide(Rect2(square.position.x, split + road_width, square.size.x, square.end.y - split - road_width), false)
 	return squares
+
+func test_plot_for_tile(plot, tile):
+	for y in range(plot.position.y, plot.end.y):
+		for x in range(plot.position.x, plot.end.x): 
+			if terrain_layer.get_cell_item(x, 0, y) != tile:
+				return false
+	return true
 
 func make_3d_boxes(squares):
 	var boxes = []
