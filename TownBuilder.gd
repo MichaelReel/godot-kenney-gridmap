@@ -28,6 +28,8 @@ func _ready():
 	var boxes = make_3d_boxes(squares)
 	draw_scaffolds(squares, boxes)
 	draw_roofs(boxes)
+	
+	draw_wall_scaffolds(boxes)
 
 # Tiles
 var base_tile
@@ -40,7 +42,10 @@ var roof_straight_tile
 var roof_straight_end_tile
 var roof_point_tile
 
+var wall_scaffold_tile
+
 func setup_tiles():
+	# Terrain tiles
 	base_tile              = terrain_layer.theme.find_item_by_name("Plate_Grass_01")
 	road_tile              = terrain_layer.theme.find_item_by_name("Plate_Pavement_01")
 	scaffold_tile          = terrain_layer.theme.find_item_by_name("Wood_Scaffolding_01")
@@ -51,6 +56,8 @@ func setup_tiles():
 	roof_straight_end_tile = terrain_layer.theme.find_item_by_name("Roof_Straight_End_Red_01")
 	roof_point_tile        = terrain_layer.theme.find_item_by_name("Roof_Point_Red_01")
 	
+	# Wall Tiles
+	wall_scaffold_tile     = wall_layer.theme.find_item_by_name("Wood_Wall_Double_Cross_01")
 
 func subdivide(plot, make_center):
 	var plots = []
@@ -227,8 +234,9 @@ func draw_tiles_solid_box(box, tile):
 				terrain_layer.set_cell_item(pos.x, pos.y, pos.z, tile)
 
 func draw_roofs(boxes):
-	while not boxes.empty():
-		boxes += draw_roof(boxes.pop_front())
+	var queue = [] + boxes
+	while not queue.empty():
+		queue += draw_roof(queue.pop_front())
 
 func draw_roof(box):
 	# If x and z are both 1, then just a point will do
@@ -278,3 +286,50 @@ func draw_roof(box):
 		raised_sections.append(AABB(Vector3(box.position.x + 1, box.end.y, box.position.z + 1), Vector3(box.size.x - 2, 1, box.size.z - 2)))
 	
 	return raised_sections
+
+func draw_wall_scaffolds(boxes):
+	for box in boxes:
+		draw_wall_scaffold(box)
+
+func draw_wall_scaffold(box):
+	# Draw each external wall indiviually
+	draw_north_wall(box)
+	draw_west_wall(box)
+	draw_south_wall(box)
+	draw_east_wall(box)
+
+func draw_north_wall(box):
+	# The -Z facing wall
+	var box_z = box.position.z
+	for y in range(box.position.y, box.end.y):
+		for box_x in range(box.position.x, box.end.x):
+			var x = box_x * 2
+			var z = box_z * 2 - 1
+			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 16)
+	
+func draw_west_wall(box):
+	# The -X facing wall
+	var box_x = box.position.x
+	for y in range(box.position.y, box.end.y):
+		for box_z in range(box.position.z, box.end.z):
+			var x = box_x * 2 - 1
+			var z = box_z * 2
+			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 10)
+
+func draw_south_wall(box):
+	# The +Z facing wall
+	var box_z = box.end.z
+	for y in range(box.position.y, box.end.y):
+		for box_x in range(box.position.x, box.end.x):
+			var x = box_x * 2
+			var z = box_z * 2 - 1
+			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 22)
+	
+func draw_east_wall(box):
+	# The +X facing wall
+	var box_x = box.end.x
+	for y in range(box.position.y, box.end.y):
+		for box_z in range(box.position.z, box.end.z):
+			var x = box_x * 2 - 1
+			var z = box_z * 2
+			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 0)
