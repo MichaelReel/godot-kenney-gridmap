@@ -34,7 +34,6 @@ func _ready():
 # Tiles
 var base_tile
 var road_tile
-var scaffold_tile
 var floor_tile
 var roof_corner_tile
 var roof_slant_tile
@@ -42,13 +41,13 @@ var roof_straight_tile
 var roof_straight_end_tile
 var roof_point_tile
 
-var wall_scaffold_tile
+var wall_scaffold
+var external_door
 
 func setup_tiles():
 	# Terrain tiles
 	base_tile              = terrain_layer.theme.find_item_by_name("Plate_Grass_01")
 	road_tile              = terrain_layer.theme.find_item_by_name("Plate_Pavement_01")
-	scaffold_tile          = terrain_layer.theme.find_item_by_name("Wood_Scaffolding_01")
 	floor_tile             = terrain_layer.theme.find_item_by_name("Plate_Wood_01")
 	roof_corner_tile       = terrain_layer.theme.find_item_by_name("Roof_Corner_Red_02")
 	roof_slant_tile        = terrain_layer.theme.find_item_by_name("Roof_Slant_Red_01")
@@ -57,7 +56,8 @@ func setup_tiles():
 	roof_point_tile        = terrain_layer.theme.find_item_by_name("Roof_Point_Red_01")
 	
 	# Wall Tiles
-	wall_scaffold_tile     = wall_layer.theme.find_item_by_name("Wood_Wall_Double_Cross_01")
+	wall_scaffold     = wall_layer.theme.find_item_by_name("Wood_Wall_Double_Cross_01")
+	external_door     = wall_layer.theme.find_item_by_name("Wood_Door_Round_01")
 
 func subdivide(plot, make_center):
 	var plots = []
@@ -213,7 +213,7 @@ func draw_scaffolds(squares, boxes):
 	for square in squares:
 		draw_ground_level_tile_square(square, floor_tile)
 	for box in boxes:
-		draw_tiles_solid_box(box, scaffold_tile)
+		draw_tiles_solid_box(box, floor_tile)
 
 func draw_ground_level_tile_square(square, tile):
 	var pos = Vector2()
@@ -290,6 +290,7 @@ func draw_roof(box):
 func draw_wall_scaffolds(boxes):
 	for box in boxes:
 		draw_wall_scaffold(box)
+		define_building_features(box)
 
 func draw_wall_scaffold(box):
 	# Draw each external wall indiviually
@@ -305,7 +306,7 @@ func draw_north_wall(box):
 		for box_x in range(box.position.x, box.end.x):
 			var x = box_x * 2
 			var z = box_z * 2 - 1
-			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 16)
+			wall_layer.set_cell_item(x, y, z, wall_scaffold, 16)
 	
 func draw_west_wall(box):
 	# The -X facing wall
@@ -314,7 +315,7 @@ func draw_west_wall(box):
 		for box_z in range(box.position.z, box.end.z):
 			var x = box_x * 2 - 1
 			var z = box_z * 2
-			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 10)
+			wall_layer.set_cell_item(x, y, z, wall_scaffold, 10)
 
 func draw_south_wall(box):
 	# The +Z facing wall
@@ -323,7 +324,7 @@ func draw_south_wall(box):
 		for box_x in range(box.position.x, box.end.x):
 			var x = box_x * 2
 			var z = box_z * 2 - 1
-			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 22)
+			wall_layer.set_cell_item(x, y, z, wall_scaffold, 22)
 	
 func draw_east_wall(box):
 	# The +X facing wall
@@ -332,4 +333,31 @@ func draw_east_wall(box):
 		for box_z in range(box.position.z, box.end.z):
 			var x = box_x * 2 - 1
 			var z = box_z * 2
-			wall_layer.set_cell_item(x, y, z, wall_scaffold_tile, 0)
+			wall_layer.set_cell_item(x, y, z, wall_scaffold, 0)
+
+func define_building_features(box):
+	# For now, pick a random wall and put a door in it
+	var y = box.position.y
+	var x = 0
+	var z = 0
+	var rot = 0
+	var wall = randi() % 4
+	match wall:
+		0: # North wall
+			x = (randi() % int(box.size.x) + box.position.x) * 2
+			z = box.position.z * 2 - 1
+			rot = 16
+		1: # West wall
+			x = box.position.x * 2 - 1
+			z = (randi() % int(box.size.z) + box.position.z) * 2
+			rot = 10
+		2: # South wall
+			x = (randi() % int(box.size.x) + box.position.x) * 2
+			z = box.end.z * 2 - 1
+			rot = 22
+		3: # East wall
+			x = box.end.x * 2 - 1
+			z = (randi() % int(box.size.z) + box.position.z) * 2
+			rot = 0
+	
+	wall_layer.set_cell_item(x, y, z, external_door, rot)
