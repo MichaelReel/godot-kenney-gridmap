@@ -5,13 +5,13 @@
 [ext_resource path="res://Test_TileSet_03.meshlib" type="MeshLibrary" id=3]
 [ext_resource path="res://camera/FlyingCamera.tscn" type="PackedScene" id=4]
 
-[node name="HouseBuilder" type="Spatial" index="0"]
+[node name="HouseBuilder" type="Spatial"]
 
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-base_dimensions = Vector3( 5, 2, 5 )
+base_extents = AABB( 0, 1, 0, 5, 2, 5 )
 building_seed = 0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]

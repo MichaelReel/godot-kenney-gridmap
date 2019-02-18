@@ -15,22 +15,6 @@ export (int)      var split_rate      = 20                  # how likely should 
 var terrain_layer
 var wall_layer
 
-func _ready():
-	terrain_layer = $TerrainGrid
-	wall_layer = $WallMap
-	setup_tiles()
-	
-	rand_seed(town_seed)
-	
-	var town_base = Rect2(-base_extends.x / 2, -base_extends.y / 2, base_extends.x, base_extends.y)
-	draw_ground_level_tile_square(town_base, base_tile)
-	var squares = subdivide(town_base, true)
-	var boxes = make_3d_boxes(squares)
-	draw_scaffolds(squares, boxes)
-	draw_roofs(boxes)
-	
-	draw_wall_scaffolds(boxes)
-
 # Tiles
 var base_tile
 var road_tile
@@ -43,6 +27,21 @@ var roof_point_tile
 
 var wall_scaffold
 var external_door
+
+var House = preload("res://HouseBuilder.gd")
+
+func _ready():
+	terrain_layer = $TerrainGrid
+	wall_layer = $WallMap
+	setup_tiles()
+	
+	rand_seed(town_seed)
+	
+	var town_base = Rect2(-base_extends.x / 2, -base_extends.y / 2, base_extends.x, base_extends.y)
+	draw_ground_level_tile_square(town_base, base_tile)
+	var squares = subdivide(town_base, true)
+	var boxes = make_3d_boxes(squares)
+	draw_houses_from_boxes(boxes)
 
 func setup_tiles():
 	# Terrain tiles
@@ -209,12 +208,6 @@ func make_3d_boxes(squares):
 		boxes.append(AABB(Vector3(square.position.x, 1, square.position.y), Vector3(square.size.x, height, square.size.y)))
 	return boxes
 
-func draw_scaffolds(squares, boxes):
-	for square in squares:
-		draw_ground_level_tile_square(square, floor_tile)
-	for box in boxes:
-		draw_tiles_solid_box(box, floor_tile)
-
 func draw_ground_level_tile_square(square, tile):
 	var pos = Vector2()
 	for y in square.size.y:
@@ -223,141 +216,8 @@ func draw_ground_level_tile_square(square, tile):
 			pos.y = square.position.y + y
 			terrain_layer.set_cell_item(pos.x, 0, pos.y, tile)
 
-func draw_tiles_solid_box(box, tile):
-	var pos = Vector3()
-	for z in box.size.z:
-		for y in box.size.y:
-			for x in box.size.x:
-				pos.x = box.position.x + x
-				pos.y = box.position.y + y
-				pos.z = box.position.z + z
-				terrain_layer.set_cell_item(pos.x, pos.y, pos.z, tile)
-
-func draw_roofs(boxes):
-	var queue = [] + boxes
-	while not queue.empty():
-		queue += draw_roof(queue.pop_front())
-
-func draw_roof(box):
-	# If x and z are both 1, then just a point will do
-	if box.size.x == 1 and box.size.z == 1:
-		terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_point_tile, 0)
-		return []
-	
-	# If x or z are equal to 1, then we're on straight bits
-	if box.size.x == 1:
-		terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_straight_end_tile, 16)
-		terrain_layer.set_cell_item(box.position.x, box.end.y, box.end.z - 1, roof_straight_end_tile, 22)
-		if box.size.z > 2:
-			for z in range (box.position.z + 1, box.end.z - 1):
-				terrain_layer.set_cell_item(box.position.x, box.end.y, z, roof_straight_tile, 16)
-		return []
-	
-	if box.size.z == 1:
-		terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_straight_end_tile, 10)
-		terrain_layer.set_cell_item(box.end.x - 1, box.end.y, box.position.z, roof_straight_end_tile, 0)
-		if box.size.x > 2:
-			for x in range (box.position.x + 1, box.end.x - 1):
-				terrain_layer.set_cell_item(x, box.end.y, box.position.z, roof_straight_tile, 0)
-		return []
-	
-	var raised_sections = []
-	# draw corners - TODO: currently very specific code, may be able to generify:
-	terrain_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_corner_tile, 16)
-	terrain_layer.set_cell_item(box.end.x - 1, box.end.y, box.position.z, roof_corner_tile, 0)
-	terrain_layer.set_cell_item(box.position.x, box.end.y, box.end.z - 1, roof_corner_tile, 10)
-	terrain_layer.set_cell_item(box.end.x - 1, box.end.y, box.end.z - 1, roof_corner_tile, 22)
-	
-	# If x or z are greater than 2 then:
-	# we need to insert the slant pieces
-	if box.size.x > 2:
-		for x in range (box.position.x + 1, box.end.x - 1):
-			terrain_layer.set_cell_item(x, box.end.y, box.position.z, roof_slant_tile, 16)
-			terrain_layer.set_cell_item(x, box.end.y, box.end.z - 1, roof_slant_tile, 22)
-	
-	if box.size.z > 2:
-		for z in range(box.position.z + 1, box.end.z - 1):
-			terrain_layer.set_cell_item(box.position.x, box.end.y, z, roof_slant_tile, 10)
-			terrain_layer.set_cell_item(box.end.x - 1, box.end.y, z, roof_slant_tile, 0)
-	
-	# If x and y are both greater than 2, then:
-	# we need another higher roof box to build roof pieces on
-	if box.size.x > 2 and box.size.z > 2:
-		raised_sections.append(AABB(Vector3(box.position.x + 1, box.end.y, box.position.z + 1), Vector3(box.size.x - 2, 1, box.size.z - 2)))
-	
-	return raised_sections
-
-func draw_wall_scaffolds(boxes):
+func draw_houses_from_boxes(boxes):
+	var house = House.new()
 	for box in boxes:
-		draw_wall_scaffold(box)
-		define_building_features(box)
-
-func draw_wall_scaffold(box):
-	# Draw each external wall indiviually
-	draw_north_wall(box)
-	draw_west_wall(box)
-	draw_south_wall(box)
-	draw_east_wall(box)
-
-func draw_north_wall(box):
-	# The -Z facing wall
-	var box_z = box.position.z
-	for y in range(box.position.y, box.end.y):
-		for box_x in range(box.position.x, box.end.x):
-			var x = box_x * 2
-			var z = box_z * 2 - 1
-			wall_layer.set_cell_item(x, y, z, wall_scaffold, 16)
-	
-func draw_west_wall(box):
-	# The -X facing wall
-	var box_x = box.position.x
-	for y in range(box.position.y, box.end.y):
-		for box_z in range(box.position.z, box.end.z):
-			var x = box_x * 2 - 1
-			var z = box_z * 2
-			wall_layer.set_cell_item(x, y, z, wall_scaffold, 10)
-
-func draw_south_wall(box):
-	# The +Z facing wall
-	var box_z = box.end.z
-	for y in range(box.position.y, box.end.y):
-		for box_x in range(box.position.x, box.end.x):
-			var x = box_x * 2
-			var z = box_z * 2 - 1
-			wall_layer.set_cell_item(x, y, z, wall_scaffold, 22)
-	
-func draw_east_wall(box):
-	# The +X facing wall
-	var box_x = box.end.x
-	for y in range(box.position.y, box.end.y):
-		for box_z in range(box.position.z, box.end.z):
-			var x = box_x * 2 - 1
-			var z = box_z * 2
-			wall_layer.set_cell_item(x, y, z, wall_scaffold, 0)
-
-func define_building_features(box):
-	# For now, pick a random wall and put a door in it
-	var y = box.position.y
-	var x = 0
-	var z = 0
-	var rot = 0
-	var wall = randi() % 4
-	match wall:
-		0: # North wall
-			x = (randi() % int(box.size.x) + box.position.x) * 2
-			z = box.position.z * 2 - 1
-			rot = 16
-		1: # West wall
-			x = box.position.x * 2 - 1
-			z = (randi() % int(box.size.z) + box.position.z) * 2
-			rot = 10
-		2: # South wall
-			x = (randi() % int(box.size.x) + box.position.x) * 2
-			z = box.end.z * 2 - 1
-			rot = 22
-		3: # East wall
-			x = box.end.x * 2 - 1
-			z = (randi() % int(box.size.z) + box.position.z) * 2
-			rot = 0
-	
-	wall_layer.set_cell_item(x, y, z, external_door, rot)
+		# Use the house setup function to create all the houses
+		house.setup(box, randi(), terrain_layer, wall_layer)

@@ -65,7 +65,7 @@ collision_mask = 1
 data = {
 "cells": PoolIntArray(  )
 }
-_sections_unfolded = [ "Cell" ]
+_sections_unfolded = [ "Cell", "Transform" ]
 __meta__ = {
 "_edit_lock_": true,
 "_editor_clip_": 0,
