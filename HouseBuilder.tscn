@@ -11,8 +11,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-base_extents = AABB( 0, 1, 0, 5, 2, 5 )
-building_seed = 0
+base_extents = AABB( 0, 1, 0, 5, 1, 5 )
+building_seed = 1
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
 

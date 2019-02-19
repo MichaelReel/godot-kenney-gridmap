@@ -1,8 +1,8 @@
 extends Spatial
 
 # Configurable parameters
-export (AABB)    var base_extents    = AABB(Vector3(0, 1, 0), Vector3(5, 2, 5)) # how big to make the building
-export (int)     var building_seed   = 0                                        # randomization seed
+export (AABB)    var base_extents    = AABB(Vector3(0, 1, 0), Vector3(5, 1, 5)) # how big to make the building
+export (int)     var building_seed   = 1                                        # randomization seed
 
 
 # Tiles
@@ -17,6 +17,7 @@ var roof_point_tile
 
 var wall_scaffold
 var external_door
+var stairs
 
 func _ready():
 	# GridMaps
@@ -31,7 +32,7 @@ func setup(extents, seid, floor_layer, wall_layer):
 	rand_seed(seid)
 	
 	draw_tiles_solid_box(floor_layer, extents, floor_tile)
-	draw_roof(floor_layer, extents)
+	draw_roof(floor_layer, wall_layer, extents)
 	draw_wall_scaffold(wall_layer, extents)
 	define_building_features(wall_layer, extents)
 
@@ -50,10 +51,10 @@ func setup_tiles(floor_theme, wall_theme):
 	# Wall Tiles
 	wall_scaffold     = wall_theme.find_item_by_name("Wood_Wall_Double_Cross_01")
 	external_door     = wall_theme.find_item_by_name("Wood_Door_Round_01")
+	stairs            = wall_theme.find_item_by_name("Stairs_Wood_01")
 
 func draw_tiles_solid_box(floor_layer, extents, tile):
-	var basement = Vector3(0, 1, 0)
-	var box = AABB(extents.position - basement, extents.size + basement)
+	var box = AABB(extents.position - Vector3(0, 1, 0), extents.size)
 	var pos = box.position
 	for z in box.size.z:
 		for y in box.size.y:
@@ -63,12 +64,12 @@ func draw_tiles_solid_box(floor_layer, extents, tile):
 				pos.z = box.position.z + z
 				floor_layer.set_cell_item(pos.x, pos.y, pos.z, tile)
 
-func draw_roof(floor_layer, box):
+func draw_roof(floor_layer, wall_layer, box):
 	var queue = [box]
 	while not queue.empty():
-		queue += draw_roof_stage(floor_layer, queue.pop_front())
+		queue += draw_roof_stage(floor_layer, wall_layer, queue.pop_front())
 
-func draw_roof_stage(floor_layer, box):
+func draw_roof_stage(floor_layer, wall_layer, box):
 	# If x and z are both 1, then just a point will do
 	if box.size.x == 1 and box.size.z == 1:
 		floor_layer.set_cell_item(box.position.x, box.end.y, box.position.z, roof_point_tile, 0)
@@ -114,6 +115,8 @@ func draw_roof_stage(floor_layer, box):
 	# we need another higher roof box to build roof pieces on
 	if box.size.x > 2 and box.size.z > 2:
 		raised_sections.append(AABB(Vector3(box.position.x + 1, box.end.y, box.position.z + 1), Vector3(box.size.x - 2, 1, box.size.z - 2)))
+		# Should also insert a stair up to the new layer, put floors on the rest of the upper level
+		wall_layer.set_cell_item((box.position.x + 1) * 2, box.end.y - 1, (box.position.z + 1) * 2, stairs, 16)
 
 	return raised_sections
 
