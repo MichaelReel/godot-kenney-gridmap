@@ -3,7 +3,7 @@
 [ext_resource path="res://TownBuilder.gd" type="Script" id=1]
 [ext_resource path="res://Test_TileSet_01.meshlib" type="MeshLibrary" id=2]
 [ext_resource path="res://Test_TileSet_03.meshlib" type="MeshLibrary" id=3]
-[ext_resource path="res://camera/FlyingCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://camera/WalkingCamera.tscn" type="PackedScene" id=4]
 
 [node name="TownBuilder" type="Spatial" index="0"]
 
@@ -93,9 +93,8 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="FlyingCamera" parent="." index="3" instance=ExtResource( 4 )]
+[node name="WalkingCamera" parent="." index="3" instance=ExtResource( 4 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.07786, 6.09386, 3.68198 )
 
 

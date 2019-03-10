@@ -5,7 +5,7 @@
 [ext_resource path="res://Test_TileSet_03.meshlib" type="MeshLibrary" id=3]
 [ext_resource path="res://camera/FlyingCamera.tscn" type="PackedScene" id=4]
 
-[node name="HouseBuilder" type="Spatial"]
+[node name="HouseBuilder" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
