@@ -58,8 +58,9 @@ func setup_tiles(floor_theme, wall_theme):
 	roof_point_tile        = floor_theme.find_item_by_name("Roof_Point_Red_01")
 	
 	# Wall Tiles
-	wall_scaffold     = wall_theme.find_item_by_name("Wood_Wall_Double_Cross_01")
+#	wall_scaffold     = wall_theme.find_item_by_name("Wood_Wall_Double_Cross_01")
 	external_door     = wall_theme.find_item_by_name("Wood_Door_Round_01")
+	wall_scaffold     = external_door
 	stairs            = wall_theme.find_item_by_name("Stairs_Wood_01")
 	keep_clear        = 2000
 
@@ -223,7 +224,8 @@ func create_stairwell(floor_layer, wall_layer, all_floors):
 			wall_layer.set_cell_item(x, position.y + 1, z, keep_clear)
 			# Set markers at the foot and landing so we don't get feature collisions
 			var offset = get_rotation_offsets(rot)
-			mark_foot_and_landing(wall_layer, position, offset)
+			wall_layer.set_cell_item((position.x + offset.x) * 2, position.y,     (position.z + offset.z) * 2, keep_clear)
+			wall_layer.set_cell_item((position.x - offset.x) * 2, position.y + 1, (position.z - offset.z) * 2, keep_clear)
 			
 
 func is_viable_stair_flight(floor_layer, wall_layer, position, rot):
@@ -259,10 +261,6 @@ func check_clear_for_stairs(floor_layer, wall_layer, position, offset):
 	if wall_layer.get_cell_item((position.x - offset.x) * 2, position.y + 1, (position.z - offset.z) * 2) != GridMap.INVALID_CELL_ITEM:
 		return false
 	return true
-
-func mark_foot_and_landing(wall_layer, position, offset):
-	wall_layer.set_cell_item((position.x + offset.x) * 2, position.y,     (position.z + offset.z) * 2, keep_clear)
-	wall_layer.set_cell_item((position.x - offset.x) * 2, position.y + 1, (position.z - offset.z) * 2, keep_clear)
 
 func define_building_features(wall_layer, box):
 	# For now, pick a random wall and put a door in it
