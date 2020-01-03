@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_River_4way_01.obj-c8c9dbcfce1492548d1b8884bca3
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

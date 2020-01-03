@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Stairs_Wood_01.obj-c919fdc56f87592e2f1647aa75034630.
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

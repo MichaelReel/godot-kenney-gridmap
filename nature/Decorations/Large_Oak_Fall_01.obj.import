@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Large_Oak_Fall_01.obj-8bf77e5b4927608dea7ebdb662563a
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

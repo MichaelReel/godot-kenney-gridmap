@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Wood_Arch_01.obj-da300f1e369ff619dcf82c0419d64905.me
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

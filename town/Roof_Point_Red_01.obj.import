@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Roof_Point_Red_01.obj-8e32357cec996b5fefcd97ae2f2560
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

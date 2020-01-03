@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_Wood_01.obj-c88d0c5e269c7070c467973d7270dd98.m
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

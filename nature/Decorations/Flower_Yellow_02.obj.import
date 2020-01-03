@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Flower_Yellow_02.obj-d6b3b84a1e657635efe62d80d803fa6
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

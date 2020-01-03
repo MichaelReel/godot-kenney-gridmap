@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Roof_Straight_Red_01.obj-2c61dfe26015f5c04fc72af2ac3
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Oak_Green_01.obj-b88a2c4927bd064bbad0df4d15f3410e.me
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

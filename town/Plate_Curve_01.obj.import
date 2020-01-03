@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_Curve_01.obj-06638689008ad9444613d5d698cee545.
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

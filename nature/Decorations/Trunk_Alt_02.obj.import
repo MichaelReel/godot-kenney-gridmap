@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Trunk_Alt_02.obj-462fbf7aa8c9f2e86e0eabf6f3bacfab.me
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

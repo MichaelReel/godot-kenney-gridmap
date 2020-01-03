@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Water_Lily_01.obj-0108acf86a0c19bc7ff266b190a2259b.m
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

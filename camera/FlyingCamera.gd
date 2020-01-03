@@ -87,6 +87,14 @@ func _physics_process(delta):
 	# Use the KinematicBody to control physics movement
 	# Slide the first body (kinematic) then move the other bodies to match the movement
 	vel = camera_control.move_and_slide(vel, Vector3(0,1,0), 5.0, 4, deg2rad(MAX_SLOPE_ANGLE))
+	
+	# (optional, but highly useful) Capturing/Freeing the cursor
+	if Input.is_action_just_pressed("ui_cancel"):
+		# Toggle mouse between captured and visible on ui_cancel
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

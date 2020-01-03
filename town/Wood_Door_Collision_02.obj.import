@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Wood_Door_Collision_02.obj-6d686e4633d9693dd9d687980
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

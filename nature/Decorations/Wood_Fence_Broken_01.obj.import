@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Wood_Fence_Broken_01.obj-d0dd0893d310a51a708c9bc3893
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

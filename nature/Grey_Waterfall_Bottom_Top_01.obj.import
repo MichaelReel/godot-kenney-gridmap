@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Grey_Waterfall_Bottom_Top_01.obj-15991ca7eaaa3253869
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

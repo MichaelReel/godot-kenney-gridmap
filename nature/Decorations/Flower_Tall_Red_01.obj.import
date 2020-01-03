@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Flower_Tall_Red_01.obj-abfe2b1cd729381c4d8c50ab4d9e2
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

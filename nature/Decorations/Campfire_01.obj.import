@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Campfire_01.obj-df6298ab3003d443515b62cd3b969e56.mes
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

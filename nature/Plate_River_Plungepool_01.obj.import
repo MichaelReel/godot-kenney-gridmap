@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_River_Plungepool_01.obj-4a5820557d6bbf4e7847fc
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_Corner_01.obj-42fe7bc6d4d052ad169307f385a3af02
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

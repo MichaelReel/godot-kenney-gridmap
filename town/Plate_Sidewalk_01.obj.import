@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_Sidewalk_01.obj-41978a70c9c9ef557342f80ca55ff0
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

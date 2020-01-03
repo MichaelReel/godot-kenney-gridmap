@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Wood_Window_Square_Sill_01.obj-9669168750728a5d35dc7
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

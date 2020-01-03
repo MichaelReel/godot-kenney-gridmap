@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Wood_Border_Wall_01.obj-9f3e5185a11aebf85c03f18b3c9c
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

@@ -15,3 +15,4 @@ dest_files=[ "res://.import/Plate_Road_01.obj-274b2888df80b75354a33fe8000e66f9.m
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
